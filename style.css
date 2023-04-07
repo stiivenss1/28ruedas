@@ -79,6 +79,9 @@ body {
     overflow-y: auto;
     padding: 20px;
   }
+  .menu-lateral {
+    max-width: 300px;
+  }
   
   .opcion {
     display: block;
