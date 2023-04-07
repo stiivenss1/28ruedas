@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+    
     <title>Document</title>
 <body>
   <div class="menu-lateral">
@@ -134,6 +136,7 @@
   
 
 <script>
+  let service_input = document.getElementById("service")
      function mostrarContenido(id, elemento) {
   var contenido = document.getElementById(id);
   var opciones = document.getElementsByClassName("opcion");
@@ -160,12 +163,26 @@ var btns = document.getElementsByClassName("edit-btn");
 // Obtener el formulario
 var form = document.getElementById("edit-form");
 
-// Agregar el evento de clic a cada botón
-for (var i = 0; i < btns.length; i++) {
-  btns[i].onclick = function() {
+document.addEventListener('click', (evento)=>{
+ 
+  if (evento.target.className == "edit-btn") {
     modal.style.display = "block";
+    console.log(evento.target.className)
+    service_input.value = evento.target.parentNode.parentNode.childNodes[3].textContent;
+    console.log(evento.target.parentNode.parentNode.childNodes[3].textContent)
+    
   }
-}
+})
+
+// Agregar el evento de clic a cada botón
+/*for (var i = 0; i < btns.length; i++) {
+  btns[i].onclick = (evento) =>{
+    modal.style.display = "block";
+    console.log(evento.target.className)
+    service_input.value = evento.target.parentNode.parentNode.childNodes[3].textContent;
+    console.log(evento.target.parentNode.parentNode.childNodes[3].textContent)
+  }
+}*/
 
 // Cuando el usuario haga clic en el botón de cierre, cerrar el modal
 span.onclick = function() {
@@ -174,7 +191,7 @@ span.onclick = function() {
 
 // Cuando el usuario envíe el formulario
 form.onsubmit = function(event) {
-  event.preventDefault(); // Evitar el envío del formulario
+  event.preventDefault(event); // Evitar el envío del formulario
 
   // Obtener los valores de los campos del formulario
   var service = document.getElementById("service").value;
