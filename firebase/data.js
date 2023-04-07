@@ -53,6 +53,7 @@ async function  guardarServicios (servicio,precio,descripcion) {
             precio,
             descripcion,
           });
+          alert("servicio creado")
         
     } catch (error) {
         console.log(error)

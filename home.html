@@ -56,6 +56,7 @@
             <th>ID</th>
             <th>Servicio</th>
             <th>Precio</th>
+            <th>Descripción</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -64,6 +65,7 @@
             <td>1</td>
             <td>Pinchazo</td>
             <td>$20.00</td>
+            <td>Reparación de pinchazos en neumáticos de cualquier tipo de vehículo</td>
             <td>
               <button class="edit-btn">Editar</button>
               <button class="delete-btn">Eliminar</button>
@@ -73,6 +75,7 @@
             <td>2</td>
             <td>Venta de neumático</td>
             <td>$100.00</td>
+            <td>Venta de neumáticos nuevos de cualquier medida y marca</td>
             <td>
               <button class="edit-btn">Editar</button>
               <button class="delete-btn">Eliminar</button>
@@ -82,6 +85,7 @@
             <td>3</td>
             <td>Alineación</td>
             <td>$50.00</td>
+            <td>Servicio de alineación de las ruedas de cualquier tipo de vehículo</td>
             <td>
               <button class="edit-btn">Editar</button>
               <button class="delete-btn">Eliminar</button>
@@ -91,6 +95,7 @@
             <td>4</td>
             <td>Aire</td>
             <td>$5.00</td>
+            <td>Llenado de aire en neumáticos de cualquier tipo de vehículo</td>
             <td>
               <button class="edit-btn">Editar</button>
               <button class="delete-btn">Eliminar</button>
@@ -100,13 +105,34 @@
       </table>
       
       
-      
-      
-  </div>
+</div>
   <div class="contenido oculto" id="contenido-sesion">
     <h1>Cerrar sesión</h1>
     <p>Aquí va el contenido para cerrar sesión...</p>
   </div>
+
+
+<!-- Modal -->
+<div id="myModal" class="modal">
+  <!-- Contenido del modal -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <form id="edit-form">
+      <label for="service">Servicio:</label>
+      <input type="text" id="service" name="service" required>
+      <label for="price">Precio:</label>
+      <input type="number" id="price" name="price" required>
+      <label for="description">Descripción:</label>
+      <textarea id="description" name="description" required></textarea>
+      <button type="submit">Guardar</button>
+    </form>
+  </div>
+</div>
+
+</div>
+
+  
+
 <script>
      function mostrarContenido(id, elemento) {
   var contenido = document.getElementById(id);
@@ -121,6 +147,52 @@
   }
   contenido.classList.remove("oculto");
 }
+
+/*-----------evento click mostrar modal--------------*/
+
+// Obtener el modal y el botón de cierre
+var modal = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
+
+// Obtener los botones que abren el modal
+var btns = document.getElementsByClassName("edit-btn");
+
+// Obtener el formulario
+var form = document.getElementById("edit-form");
+
+// Agregar el evento de clic a cada botón
+for (var i = 0; i < btns.length; i++) {
+  btns[i].onclick = function() {
+    modal.style.display = "block";
+  }
+}
+
+// Cuando el usuario haga clic en el botón de cierre, cerrar el modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// Cuando el usuario envíe el formulario
+form.onsubmit = function(event) {
+  event.preventDefault(); // Evitar el envío del formulario
+
+  // Obtener los valores de los campos del formulario
+  var service = document.getElementById("service").value;
+  var price = document.getElementById("price").value;
+  var description = document.getElementById("description").value;
+
+  // Mostrar los valores en la consola
+  console.log("Servicio: " + service);
+  console.log("Precio: " + price);
+  console.log("Descripción: " + description);
+
+  // Cerrar el modal
+  modal.style.display = "none";
+};
+
+
+
+
 
 
 </script>
