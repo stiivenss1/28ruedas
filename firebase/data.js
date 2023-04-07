@@ -46,7 +46,7 @@ traer_btn.addEventListener('click', ()=>{
 
 
 /**CREAR SERVICIO */
-async function  guardarServicios (servicio,precio,descripcion) {
+export async function  guardarServicios (servicio,precio,descripcion) {
     try {
         await database.ref("servicios").push({
             servicio,
@@ -62,7 +62,7 @@ async function  guardarServicios (servicio,precio,descripcion) {
 }
 /**LLAMAR TODOS LOS SERVICIOS */
 
-async function  llamarServicios () {
+export async function  llamarServicios () {
 
 
     await database.ref("servicios").get().then((querySnapshot) => {
@@ -78,7 +78,7 @@ async function  llamarServicios () {
 }
 
 //ELIMINAR SERVICIO
-async function  eliminarServicio (id) {
+export async function  eliminarServicio (id) {
 
 
     await  database.ref("servicios/"+id).remove().then(()=>{
