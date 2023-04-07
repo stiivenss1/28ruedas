@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Document</title>
+<body>
+  <div class="menu-lateral">
+    <a class="opcion opcion-activo" href="#registro-producto" onclick="mostrarContenido('contenido-producto', this)">Registro de producto</a>
+    <a class="opcion" href="#registro-cliente" onclick="mostrarContenido('contenido-cliente', this)">Registro de cliente</a>
+    <a class="opcion" href="#registro-venta" onclick="mostrarContenido('contenido-venta', this)">Registro de venta</a>
+    <a class="opcion" href="#registro-servicio" onclick="mostrarContenido('contenido-servicio', this)">Registro de servicio</a>
+    <a class="opcion" href="#cerrar-sesion" onclick="mostrarContenido('contenido-sesion', this)">Cerrar sesión</a>
+  </div>
+  <div class="contenido" id="contenido-producto">
+    <h1>Registro de producto</h1>
+    <p>Aquí va el contenido del registro de producto...</p>
+  </div>
+  <div class="contenido oculto" id="contenido-cliente">
+    <h1>Registro de cliente</h1>
+    <p>Aquí va el contenido del registro de cliente...</p>
+  </div>
+  <div class="contenido oculto" id="contenido-venta">
+    <h1>Registro de venta</h1>
+    <p>Aquí va el contenido del registro de venta...</p>
+  </div>
+  <div class="contenido oculto" id="contenido-servicio">
+    <h1>Registro de servicio</h1>
+    <!--formulario-->
+
+     <form>
+        <h2>Registro de servicio</h2>
+        <div>
+          <label for="servicio">Servicio:</label>
+          <input type="text" name="servicio" id="servicio" required>
+        </div>
+        <div>
+          <label for="precio">Precio:</label>
+          <input type="number" name="precio" id="precio" required>
+        </div>
+        <div>
+          <label for="descripcion">Descripción:</label>
+          <textarea name="descripcion" id="descripcion" rows="4" cols="50" required></textarea>
+        </div>
+        <button type="submit">Enviar</button>
+      </form>
+      
+      <br>
+      <!--tabla-->
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Servicio</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Pinchazo</td>
+            <td>$20.00</td>
+            <td>
+              <button class="edit-btn">Editar</button>
+              <button class="delete-btn">Eliminar</button>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Venta de neumático</td>
+            <td>$100.00</td>
+            <td>
+              <button class="edit-btn">Editar</button>
+              <button class="delete-btn">Eliminar</button>
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Alineación</td>
+            <td>$50.00</td>
+            <td>
+              <button class="edit-btn">Editar</button>
+              <button class="delete-btn">Eliminar</button>
+            </td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Aire</td>
+            <td>$5.00</td>
+            <td>
+              <button class="edit-btn">Editar</button>
+              <button class="delete-btn">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+      
+      
+      
+  </div>
+  <div class="contenido oculto" id="contenido-sesion">
+    <h1>Cerrar sesión</h1>
+    <p>Aquí va el contenido para cerrar sesión...</p>
+  </div>
+<script>
+     function mostrarContenido(id, elemento) {
+  var contenido = document.getElementById(id);
+  var opciones = document.getElementsByClassName("opcion");
+  for (var i = 0; i < opciones.length; i++) {
+    opciones[i].classList.remove("opcion-activo");
+  }
+  elemento.classList.add("opcion-activo");
+  var contenidos = document.getElementsByClassName("contenido");
+  for (var j = 0; j < contenidos.length; j++) {
+    contenidos[j].classList.add("oculto");
+  }
+  contenido.classList.remove("oculto");
+}
+
+
+</script>
+      
+</body>
+</html>
