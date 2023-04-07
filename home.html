@@ -47,7 +47,7 @@
           <label for="descripcion">Descripción:</label>
           <textarea name="descripcion" id="descripcion" rows="4" cols="50" required></textarea>
         </div>
-        <button type="submit" id="enviar_servicios">Enviar</button>
+        <button type="button" id="enviar_servicios">Enviar</button>
       </form>
       
       <br>
@@ -136,6 +136,31 @@
   
 
 <script>
+
+
+  /*CREDENCIALES DE FIREBASE*/
+  
+       
+
+
+       // Initialize Firebase
+var firebaseConfig = {
+           apiKey: "AIzaSyC0LgAmT6oMPV1vqmVdy5PuHCd1Id79by8",
+         authDomain: "ruedas-354907.firebaseapp.com",
+         databaseURL: "https://ruedas-354907-default-rtdb.firebaseio.com",
+         projectId: "ruedas-354907",
+         storageBucket: "ruedas-354907.appspot.com",
+         messagingSenderId: "441827906026",
+         appId: "1:441827906026:web:b615f9d9ff05cf420b2293",
+         measurementId: "G-H0P5QJB4BX"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+
+  
+
+
   let service_input = document.getElementById("service")
      function mostrarContenido(id, elemento) {
   var contenido = document.getElementById(id);
@@ -174,15 +199,7 @@ document.addEventListener('click', (evento)=>{
   }
 })
 
-// Agregar el evento de clic a cada botón
-/*for (var i = 0; i < btns.length; i++) {
-  btns[i].onclick = (evento) =>{
-    modal.style.display = "block";
-    console.log(evento.target.className)
-    service_input.value = evento.target.parentNode.parentNode.childNodes[3].textContent;
-    console.log(evento.target.parentNode.parentNode.childNodes[3].textContent)
-  }
-}*/
+
 
 // Cuando el usuario haga clic en el botón de cierre, cerrar el modal
 span.onclick = function() {
