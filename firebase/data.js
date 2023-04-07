@@ -1,4 +1,4 @@
-let traer_btn = document.getElementById("traer");
+//let traer_btn = document.getElementById("traer");
 
 // Get a reference to the database service
 var database = firebase.database();
@@ -31,7 +31,7 @@ document.querySelector("form").addEventListener("submit", function (event) {
 });
 
 
-traer_btn.addEventListener('click', ()=>{
+/*traer_btn.addEventListener('click', ()=>{
     database.ref("servicios/").remove().then(()=>{
         alert('eliminado')
     })
@@ -40,7 +40,7 @@ traer_btn.addEventListener('click', ()=>{
       });
     
     
-})
+})*/
 
 
 
@@ -56,7 +56,7 @@ export async function  guardarServicios (servicio,precio,descripcion) {
           alert("servicio creado")
         
     } catch (error) {
-        console.log(error)
+        alert(error)
     }
    
     
