@@ -45,7 +45,9 @@ document.querySelector("form").addEventListener("submit", function (event) {
 
 
 
-/**CREAR SERVICIO */
+/**CREAR SERVICIO 
+ * @servicio: string para guardar el servicio
+ */
 export async function  guardarServicios (servicio,precio,descripcion) {
     try {
         await database.ref("servicios").push({
@@ -64,19 +66,28 @@ export async function  guardarServicios (servicio,precio,descripcion) {
 /**LLAMAR TODOS LOS SERVICIOS */
 
 export async function  llamarServicios () {
-
-
-    await database.ref("servicios").get().then((querySnapshot) => {
-            
-           return querySnapshot.val()
-    
-    })
-    .catch((error) => {
-        alert.error("Error al obtener los servicios: ", error);
-    });
-    
+    return new Promise((resolve, reject) => {
+        database.ref("servicios").once("value", function(snapshot) {
+          const datos = snapshot.val();
+          resolve(datos);
+        }, function(error) {
+          reject(error);
+        });
+      });
+  
     
 }
+
+function obtenerDatosDeFirebase() {
+    return new Promise((resolve, reject) => {
+      database.ref("servicios").once("value", function(snapshot) {
+        const datos = snapshot.val();
+        resolve(datos);
+      }, function(error) {
+        reject(error);
+      });
+    });
+  }
 
 //ELIMINAR SERVICIO
 export async function  eliminarServicio (id) {
